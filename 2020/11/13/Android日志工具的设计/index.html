@@ -4,7 +4,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  <title>Tyhj‘s Blog</title>
+  <title>Android日志工具的设计 | Tyhj‘s Blog</title>
   <meta name="description" content="Talk is cheap，Show me the code" />
   <meta name="HandheldFriendly" content="True" />
   <meta name="MobileOptimized" content="320" />
@@ -44,11 +44,9 @@
       </time>
     
 </span>
-    <h1 class="post-title"></h1>
+    <h1 class="post-title">Android日志工具的设计</h1>
     <section class="post-content">
-      <h1 id="Android日志工具的设计"><a href="#Android日志工具的设计" class="headerlink" title="Android日志工具的设计"></a>Android日志工具的设计</h1><p>标签（空格分隔）： Android</p>
-<hr>
-<h2 id="日志工具"><a href="#日志工具" class="headerlink" title="日志工具"></a>日志工具</h2><p>日志工具是日常开发中必不可少的工具，日志工具的功能一方面是开发时的实时打印，用于进行调试；另一个方面就是输出日志文件，当程序运行出现异常的时候用于定位问题；之前在项目中负责了日志工具的开发工作，最近也有同事咨询日志性能相关的东西，感觉还是有些技巧可以总结一波的。</p>
+      <h2 id="日志工具"><a href="#日志工具" class="headerlink" title="日志工具"></a>日志工具</h2><p>日志工具是日常开发中必不可少的工具，日志工具的功能一方面是开发时的实时打印，用于进行调试；另一个方面就是输出日志文件，当程序运行出现异常的时候用于定位问题；之前在项目中负责了日志工具的开发工作，最近也有同事咨询日志性能相关的东西，感觉还是有些技巧可以总结一波的。</p>
 <h2 id="日志打印功能"><a href="#日志打印功能" class="headerlink" title="日志打印功能"></a>日志打印功能</h2><h3 id="基本打印"><a href="#基本打印" class="headerlink" title="基本打印"></a>基本打印</h3><p>对于日志打印，Android提供了Log类用于日志打印，打印日志分不同的等级，便于日志工具的封装，一般使用带日志等级的方法进行打印，而不是直接调用相应等级的方法；其中需要注意的一点是当<code>tag</code>参数<code>TextUtils.isEmpty()</code>时，是不会进行打印输出的；</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Low-level logging call.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> priority The priority/type of this log message 日志等级</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> tag Used to identify the source of a log message.  It usually identifies TAG</span></span><br><span class="line"><span class="comment">    *        the class or activity where the log call occurs.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> msg The message you would like logged. 打印的信息</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> The number of bytes written.</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">println</span><span class="params">(<span class="keyword">int</span> priority, String tag, String msg)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> println(LOG_ID_MAIN, priority, tag, msg);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
@@ -148,7 +146,7 @@
   <nav class="pagination" role="pagination">
     
     <a class="newer-posts" href="/2020/11/13/%E6%B7%98%E5%AE%9D%E5%8F%8C%E5%8D%81%E4%B8%80%E9%A2%86%E5%96%B5%E5%B8%81/">
-        ← 
+        ← 淘宝双十一领喵币
     </a>
     
     <span class="page-number">•</span>
